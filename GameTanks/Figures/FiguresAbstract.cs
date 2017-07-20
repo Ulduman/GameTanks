@@ -19,8 +19,8 @@ namespace Figures
 
 
         public abstract void Draw(ref Graphics formCanva);
-        public abstract void Move(String way, int speed);
-        public abstract bool CheckLife(int power, int armor);
+        public abstract void Move(String way);
+        public abstract bool CheckLife(int power);
         public FiguresAbstract(int x1,int y1, int x2, int y2, int x3, int y3)
         {
             this.points =new Point[] { new Point(x1,y1), new Point(x2,y2), new Point(x3, y3)};

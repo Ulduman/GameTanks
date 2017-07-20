@@ -13,9 +13,12 @@ namespace Figures
         {
         }
 
-        public override bool CheckLife(int power,int armor)
+        public override bool CheckLife(int power)
         {
-            bool x=tank.CheckLife(power, armor);
+            tank.armor = this.armor;
+
+            bool x=tank.CheckLife(power);
+
             this.live = tank.live;
             return x;
 
@@ -26,9 +29,10 @@ namespace Figures
             tank.Draw(ref formCanva);
         }
 
-        public override void Move(string way,int speed)
+        public override void Move(string way)
         {
-            tank.Move(way, speed);
+            tank.speed = this.speed;
+            tank.Move(way);
             this.points = tank.points;
         }
     }

@@ -25,38 +25,38 @@ namespace Figures
             formCanva.FillPolygon(new SolidBrush(color), points);
         }
 
-        public override void Move(String way, int speed)
+        public override void Move(String way)
         {
             if (way.Equals("up"))
             {
-                points[0].Y = points[0].Y - (speed);
-                points[1].Y = points[1].Y - (speed);
-                points[2].Y = points[2].Y - (speed);
+                points[0].Y = points[0].Y - (this.speed);
+                points[1].Y = points[1].Y - (this.speed);
+                points[2].Y = points[2].Y - (this.speed);
 
             }else if (way.Equals("down"))
             {
-                points[0].Y = points[0].Y + (speed);
-                points[1].Y = points[1].Y + (speed);
-                points[2].Y = points[2].Y + (speed);
+                points[0].Y = points[0].Y + (this.speed);
+                points[1].Y = points[1].Y + (this.speed);
+                points[2].Y = points[2].Y + (this.speed);
             }
             else if (way.Equals("right"))
             {
-                points[0].X = points[0].X + (speed);
-                points[1].X = points[1].X + (speed);
-                points[2].X = points[2].X + (speed);
+                points[0].X = points[0].X + (this.speed);
+                points[1].X = points[1].X + (this.speed);
+                points[2].X = points[2].X + (this.speed);
             }else if (way.Equals("left"))
             {
-                points[0].X = points[0].X - (speed);
-                points[1].X = points[1].X - (speed);
-                points[2].X = points[2].X - (speed);
+                points[0].X = points[0].X - (this.speed);
+                points[1].X = points[1].X - (this.speed);
+                points[2].X = points[2].X - (this.speed);
             }
         }
 
-        public override bool CheckLife(int power, int armor)
+        public override bool CheckLife(int power)
         {
-            if (armor < power)
+            if (this.armor < power)
             {
-                power = power-armor;
+                power = power- this.armor;
                 this.live = this.live - power;
             }
             if (this.live > 0)
