@@ -115,5 +115,6 @@ namespace Figures
                 return true;
             } else return false;
         }
+
     }
 }
