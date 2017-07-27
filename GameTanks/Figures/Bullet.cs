@@ -47,14 +47,26 @@ namespace Figures
             formCanva.FillEllipse(Brushes.Black, new Rectangle(point,size));
         }
 
-       /* public bool CheckLive(int x, int y, FiguresAbstract tank1, FiguresAbstract tank2)
-        {
+         public bool CheckLive(int x, int y, FiguresAbstract tank1)
+         {
+            double a1 = (this.point.X - tank1.points[0].X) * (tank1.points[1].Y - tank1.points[0].Y) - (tank1.points[1].X - tank1.points[0].X) * (point.Y - tank1.points[0].Y),
+            b1 = (this.point.X - tank1.points[1].X) * (tank1.points[2].Y - tank1.points[1].Y) - (tank1.points[2].X - tank1.points[1].X) * (point.Y - tank1.points[1].Y),
+            c1 = (this.point.X - tank1.points[2].X) * (tank1.points[0].Y - tank1.points[2].Y) - (tank1.points[0].X - tank1.points[2].X) * (point.Y - tank1.points[2].Y);
 
-            if (this.point.X > x || this.point.X < 0 || this.point.Y > y || this.point.Y < 0 || )
+            if ((a1 == 0 && point.Y>tank1.points[1].Y && point.Y<tank1.points[0].Y && point.X>tank1.points[0].X && point.X<tank1.points[1].X) || 
+                (c1 == 0 && point.Y > tank1.points[0].Y && point.Y < tank1.points[2].Y && point.X > tank1.points[2].X && point.X < tank1.points[0].X) || 
+                (b1 == 0 && point.Y > tank1.points[2].Y && point.Y < tank1.points[1].Y && point.X > tank1.points[1].X && point.X < tank1.points[2].X) || 
+                (a1 > 0 && c1 > 0 && b1 > 0) || (a1 < 0 && c1 < 0 && b1 < 0))
             {
+                tank1.CheckLife(power);
                 return false;
-            } else return true;
-        }*/
+            }else if (this.point.X > x || this.point.X < 0 || this.point.Y > y || this.point.Y < 0)
+                {
+                    return false;
+                }
+                else return true;
+
+         }
 
 
     }

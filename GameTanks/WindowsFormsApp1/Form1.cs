@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     {
         FiguresAbstract tank1, tank2;
         Graphics formCanva;
-        List<Bullet> bullets = new List<Bullet>();
+        List<Bullet> bullets;
         public Form1()
         {
             InitializeComponent();
@@ -72,10 +72,25 @@ namespace WindowsFormsApp1
         private void timer1_Tick(object sender, EventArgs e)
         {
             formCanva.Clear(this.BackColor);
+            Queue<Bullet> delBullets = new Queue<Bullet>();
             foreach (var bullet in bullets)
             {
                 bullet.Shoot();
+                
+                if(!bullet.CheckLive(this.Width, this.Height, tank1) || !bullet.CheckLive(this.Width, this.Height, tank2))
+                {
+                    delBullets.Enqueue(bullet);
+                }
                 bullet.Draw(ref formCanva);
+            }
+            while (delBullets.Count > 0)
+            {
+                Bullet blt = delBullets.Dequeue();
+                bullets.Remove(blt);
+            }
+            if(tank1.live<=0 || tank2.live <= 0)
+            {
+                timer1.Stop();
             }
             tank1.Draw(ref formCanva);
             tank2.Draw(ref formCanva);
@@ -85,6 +100,7 @@ namespace WindowsFormsApp1
         {
             tank1 = new Tank(20, this.Height / 2, 10, this.Height / 2+10, 10, this.Height / 2-10, Color.Blue);
             tank2 = new Tank(this.Width-40, this.Height / 2, this.Width - 30, this.Height / 2-10, this.Width - 30, this.Height / 2+10, Color.Red);
+            bullets = new List<Bullet>();
             tank1.Draw(ref formCanva);
             tank2.Draw(ref formCanva);
             timer1.Start();
