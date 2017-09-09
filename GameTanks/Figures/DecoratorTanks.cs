@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
-    abstract class DecoratorTanks : FiguresAbstract
+    public abstract class DecoratorTanks : FiguresAbstract
     {
         protected FiguresAbstract tank;
 
-        public DecoratorTanks(FiguresAbstract tank, int speed, int armor, int power,int live) : base(tank.points,tank.color,tank.speed,tank.armor,tank.power,tank.live)
+        public DecoratorTanks(FiguresAbstract tank, int speed, int armor, int power,int live) : base(tank.Points,tank.Color,tank.Speed,tank.Armor,tank.Power,tank.Live)
         {
             this.tank = tank;
         }

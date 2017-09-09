@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 namespace Figures
 {
-    class SpeedTank : DecoratorTanks
+    public class PowerTank : DecoratorTanks
     {
-        public SpeedTank(FiguresAbstract tank) : base(tank,tank.speed+1,tank.armor,tank.power,tank.live)
+        public PowerTank(FiguresAbstract tank) : base(tank,tank.Speed,tank.Armor,tank.Power,tank.Live)
         {
+            this.Power = tank.Power + 1;
         }
 
         public override bool CheckLife(int power)
         {
-            tank.armor = this.armor;
+            tank.Armor = this.Armor;
 
-            bool x=tank.CheckLife(power);
+            bool x = tank.CheckLife(power);
 
-            this.live = tank.live;
+            this.Live = tank.Live;
             return x;
 
         }
@@ -31,9 +32,10 @@ namespace Figures
 
         public override void Move(string way)
         {
-            tank.speed = this.speed;
+            tank.Speed = this.Speed;
             tank.Move(way);
-            this.points = tank.points;
+            this.Points = tank.Points;
         }
     }
 }
+

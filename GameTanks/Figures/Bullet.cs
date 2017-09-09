@@ -17,20 +17,20 @@ namespace Figures
 
         public Bullet(FiguresAbstract tank)
         {
-            this.power = tank.power;
-            this.point = tank.points[0];
-            if(tank.points[0].Y < tank.points[1].Y && tank.points[0].Y < tank.points[2].Y)
+            this.power = tank.Power;
+            this.point = tank.Points[0];
+            if(tank.Points[0].Y < tank.Points[1].Y && tank.Points[0].Y < tank.Points[2].Y)
             {
                 track =new int[] { 0, -1};
-            }else if (tank.points[0].Y > tank.points[1].Y && tank.points[0].Y > tank.points[2].Y)
+            }else if (tank.Points[0].Y > tank.Points[1].Y && tank.Points[0].Y > tank.Points[2].Y)
             {
                 track = new int[] { 0, 1 };
             }
-            else if (tank.points[0].X > tank.points[1].X && tank.points[0].X > tank.points[2].X)
+            else if (tank.Points[0].X > tank.Points[1].X && tank.Points[0].X > tank.Points[2].X)
             {
                 track = new int[] {1, 0 };
             }
-            else if (tank.points[0].X < tank.points[1].X && tank.points[0].X < tank.points[2].X)
+            else if (tank.Points[0].X < tank.Points[1].X && tank.Points[0].X < tank.Points[2].X)
             {
                 track = new int[] { -1, 0 };
             }
@@ -49,13 +49,13 @@ namespace Figures
 
          public bool CheckLive(int x, int y, FiguresAbstract tank1)
          {
-            double a1 = (this.point.X - tank1.points[0].X) * (tank1.points[1].Y - tank1.points[0].Y) - (tank1.points[1].X - tank1.points[0].X) * (point.Y - tank1.points[0].Y),
-            b1 = (this.point.X - tank1.points[1].X) * (tank1.points[2].Y - tank1.points[1].Y) - (tank1.points[2].X - tank1.points[1].X) * (point.Y - tank1.points[1].Y),
-            c1 = (this.point.X - tank1.points[2].X) * (tank1.points[0].Y - tank1.points[2].Y) - (tank1.points[0].X - tank1.points[2].X) * (point.Y - tank1.points[2].Y);
+            double a1 = (this.point.X - tank1.Points[0].X) * (tank1.Points[1].Y - tank1.Points[0].Y) - (tank1.Points[1].X - tank1.Points[0].X) * (point.Y - tank1.Points[0].Y),
+            b1 = (this.point.X - tank1.Points[1].X) * (tank1.Points[2].Y - tank1.Points[1].Y) - (tank1.Points[2].X - tank1.Points[1].X) * (point.Y - tank1.Points[1].Y),
+            c1 = (this.point.X - tank1.Points[2].X) * (tank1.Points[0].Y - tank1.Points[2].Y) - (tank1.Points[0].X - tank1.Points[2].X) * (point.Y - tank1.Points[2].Y);
 
-            if ((a1 == 0 && point.Y>tank1.points[1].Y && point.Y<tank1.points[0].Y && point.X>tank1.points[0].X && point.X<tank1.points[1].X) || 
-                (c1 == 0 && point.Y > tank1.points[0].Y && point.Y < tank1.points[2].Y && point.X > tank1.points[2].X && point.X < tank1.points[0].X) || 
-                (b1 == 0 && point.Y > tank1.points[2].Y && point.Y < tank1.points[1].Y && point.X > tank1.points[1].X && point.X < tank1.points[2].X) || 
+            if ((a1 == 0 && point.Y>tank1.Points[1].Y && point.Y<tank1.Points[0].Y && point.X>tank1.Points[0].X && point.X<tank1.Points[1].X) || 
+                (c1 == 0 && point.Y > tank1.Points[0].Y && point.Y < tank1.Points[2].Y && point.X > tank1.Points[2].X && point.X < tank1.Points[0].X) || 
+                (b1 == 0 && point.Y > tank1.Points[2].Y && point.Y < tank1.Points[1].Y && point.X > tank1.Points[1].X && point.X < tank1.Points[2].X) || 
                 (a1 > 0 && c1 > 0 && b1 > 0) || (a1 < 0 && c1 < 0 && b1 < 0))
             {
                 tank1.CheckLife(power);
